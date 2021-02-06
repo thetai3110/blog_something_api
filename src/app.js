@@ -19,7 +19,6 @@ mongoose.connect(constants.mongodb, { useNewUrlParser: true, useNewUrlParser: tr
 // Router
 var indexRouter = require('../src/routes/index');
 var uploadsRouter = require('../src/routes/uploads');
-var blogRouter = require('../src/routes/blog');
 var tagRouter = require('../src/routes/tag');
 var userRouter = require('../src/routes/user');
 var blogRouter = require('../src/routes/blog');
