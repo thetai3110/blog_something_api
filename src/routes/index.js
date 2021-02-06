@@ -3,7 +3,7 @@ var router = express.Router();
 var connect = require('../repositories/connect');
 
 router.get('/', function (req, res, next) {
-  connect.insert();
+  console.log("a");
   res.status(200).send({ mes: 'Hello world!' })
 });
 
