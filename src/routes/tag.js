@@ -5,9 +5,9 @@ var Tag = require('../model/tag.model');
 
 router.get('/', (req, res, next) => {
     Tag.find({}).then((data) => {
-        res.status(200).send({ message: 'fetch all tags successed!', data: data });
+        res.status(200).json({ message: 'fetch all tags successed!', data: data });
     }).catch((err) => {
-        res.status(500).send({ message: err, data: [] });
+        res.status(500).json({ message: err, data: [] });
     })
 })
 

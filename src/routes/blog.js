@@ -5,9 +5,9 @@ var Blog = require('../model/blog.model');
 
 router.get('/', (req, res, next) => {
     Blog.find({}).then((data) => {
-        res.status(200).send({ message: 'fetch all blogs successed!', data: data });
+        res.status(200).json({ message: 'fetch all blogs successed!', data: data });
     }).catch((err) => {
-        res.status(500).send({ message: err, data: [] });
+        res.status(500).json({ message: err, data: [] });
     })
 })
 
