@@ -21,12 +21,19 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.post('/', upload.array('upload', 12), (req, res, next) => {
+router.post('/multi', upload.array('upload', 12), (req, res, next) => {
     req.files.forEach(el => {
         res.status(200).json({
             uploaded: true,
             url: constants.serverName + '/' + el.filename
         })
+    })
+})
+
+router.post('/single', upload.single('myFiles'), (req, res, next) => {
+    res.status(200).json({
+        uploaded: true,
+        url: constants.serverName + '/' + req.file.filename
     })
 })
 

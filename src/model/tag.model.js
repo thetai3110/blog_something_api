@@ -5,6 +5,7 @@ var TagSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     tagName: {
         type: String,
+        unique: true,
         required: true
     }
 })

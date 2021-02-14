@@ -3,9 +3,28 @@ let Schema = mongoose.Schema;
 
 var BlogSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    authorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    author: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
+        username: {
+            type: String,
+            require: true
+        },
+        fullname: {
+            type: String,
+            require: true
+        },
+        email: {
+            type: String,
+            require: true
+        },
+    },
+    image: {
+        type: String,
+        required: true
     },
     title: {
         type: String,
@@ -33,16 +52,31 @@ var BlogSchema = new Schema({
     },
     publishedAt: {
         type: Date,
-        default: Date.now
+        require: false
     },
     publishedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        require: false
     },
-    tag: [
+    tags: [
+        {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Tag',
+                required: true
+            },
+            tagName: {
+                type: String,
+                require: true
+            }
+        }
+    ],
+    comment: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Tag'
+            ref: 'Comment',
+            required: false
         }
     ]
 })
