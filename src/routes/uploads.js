@@ -30,7 +30,7 @@ router.post('/multi', upload.array('upload', 12), (req, res, next) => {
     })
 })
 
-router.post('/single', upload.single('myFiles'), (req, res, next) => {
+router.post('/single', upload.single('file-upload-blog'), (req, res, next) => {
     res.status(200).json({
         uploaded: true,
         url: constants.serverName + '/' + req.file.filename
