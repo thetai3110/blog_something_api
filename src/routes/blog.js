@@ -19,6 +19,38 @@ router.get('/', (req, res, next) => {
     })
 })
 
+router.get('/page/:page', (req, res, next) => {
+    Blog.find({ published: true }).limit(3).skip((req.params.page - 1) * 3).then((data) => {
+        res.status(200).json({
+            result: 'ok',
+            message: `fetch page ${req.params.page} blogs successfully!`,
+            data: data
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            result: 'failed',
+            message: err,
+            data: null
+        });
+    })
+})
+
+router.get('/total', (req, res, next) => {
+    Blog.find({ published: true }).count().then((data) => {
+        res.status(200).json({
+            result: 'ok',
+            message: `fetch page ${req.params.page} blogs successfully!`,
+            data: data
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            result: 'failed',
+            message: err,
+            data: null
+        });
+    })
+})
+
 router.get('/published/:published', (req, res, next) => {
     Blog.find({ published: req.params.published }, (err, data) => {
         if (err) {
@@ -31,7 +63,7 @@ router.get('/published/:published', (req, res, next) => {
             if (data !== null)
                 res.status(200).json({
                     result: 'ok',
-                    message: `fetch blog follow published with id: ${req.params.published} successfully!`,
+                    message: `fetch blog follow published: ${req.params.published} successfully!`,
                     data: data
                 });
             else
