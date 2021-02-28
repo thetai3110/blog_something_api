@@ -39,8 +39,8 @@ var BlogSchema = new Schema({
         required: true
     },
     published: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     createAt: {
         type: Date,
@@ -61,15 +61,8 @@ var BlogSchema = new Schema({
     },
     tags: [
         {
-            _id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Tag',
-                required: true
-            },
-            tagName: {
-                type: String,
-                require: true
-            }
+            type: String,
+            require: true
         }
     ],
     comment: [

@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/page/:page', (req, res, next) => {
-    Blog.find({ published: true }).limit(3).skip((req.params.page - 1) * 3).then((data) => {
+    Blog.find({ published: 1 }).limit(3).skip((req.params.page - 1) * 3).then((data) => {
         res.status(200).json({
             result: 'ok',
             message: `fetch page ${req.params.page} blogs successfully!`,
